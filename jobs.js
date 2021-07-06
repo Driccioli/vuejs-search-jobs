@@ -57,13 +57,28 @@ var app = new Vue({
         ],
         starred: [1, 2, 3],
         applied: [4, 5],
+        modalVisible: false,
     },
     methods:{
-        addFavourite(id){
-            if (!this.starred.includes(id)){
-                this.starred.push(id);
+        addOrRemove(id, array){
+            if (!array.includes(id)){
+                array.push(id);
             }   else{
-                this.starred.splice(this.starred.indexOf(id), 1);
+                array.splice(array.indexOf(id), 1);
+            }
+            if(this.applied.includes(id)){
+                this.starred.splice(this.starred.indexOf(id),1);
+            }
+        },
+        apply(){
+            function modalOnOff(){
+                setTimeout(function(){
+                    modalVisible = !modalVisible;
+                }, 1000)
+            }
+            modalOnOff();
+            if(modalVisible){
+                modalOnOff();
             }
         }
     }
