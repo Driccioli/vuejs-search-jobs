@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Searcher</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-for="job in jobs">
+            <ul>
+                <li><b>{{job.company}}</b></li>
+                <li>City: {{job.city}}</li>
+                <li>Position: {{job.position}}</li>
+                <li>Description: <br> {{job.description}}</li>
+                <li>Date of creation: {{job.created_at}}</li>
+                <li>Type of contract: {{job.contract}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="jobs.js"></script>
+</body>
+</html>
