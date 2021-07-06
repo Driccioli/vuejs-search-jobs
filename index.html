@@ -12,7 +12,7 @@
     <div id="app">
         <div v-for="job in jobs">
             <ul>
-                <li><i v-show="starred.includes(job.id)"class="fas fa-star"></i><i v-show="!starred.includes(job.id)"class="far fa-star"></i><b>{{job.company}}</b></li>
+                <li><i @click="addFavourite(job.id)" v-show="starred.includes(job.id)"class="fas fa-star"></i><i @click="addFavourite(job.id)" v-show="!starred.includes(job.id)"class="far fa-star"></i><b>{{job.company}}</b></li>
                 <li>City: {{job.city}}</li>
                 <li>Position: {{job.position}}</li>
                 <li>Description: <br> {{job.description}}</li>

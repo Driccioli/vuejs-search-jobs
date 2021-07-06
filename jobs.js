@@ -59,6 +59,12 @@ var app = new Vue({
         applied: [4, 5],
     },
     methods:{
-        
+        addFavourite(id){
+            if (!this.starred.includes(id)){
+                this.starred.push(id);
+            }   else{
+                this.starred.splice(this.starred.indexOf(id), 1);
+            }
+        }
     }
 });
