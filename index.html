@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +12,52 @@
 </head>
 <body>
     <div id="app">
-        <div v-for="job in jobs">
-            <ul>
-                <li><i @click="addOrRemove(job.id, starred)" v-show="starred.includes(job.id)"class="fas fa-star"></i><i @click="addOrRemove(job.id, starred)" v-show="!starred.includes(job.id)"class="far fa-star"></i><b>{{job.company}}</b></li>
-                <li>City: {{job.city}}</li>
-                <li>Position: {{job.position}}</li>
-                <li>Description: <br> {{job.description}}</li>
-                <li>Date of creation: {{job.created_at}}</li>
-                <li>Type of contract: {{job.contract}}</li>
-                <li v-show="!applied.includes(job.id)"><button @click="addOrRemove(job.id, applied)">APPLY</button></li>
-                <li v-show="applied.includes(job.id)"><button>Already applied</button></li>
-            </ul>
+        <div class="float-start col-4 list">
+            <div :class="{'applied-job': applied.includes(job.id)}" v-for="job in jobs">
+                <ul>
+                    <li><b>{{job.company}}</b><i @click="addOrRemove(job.id, starred)" v-show="starred.includes(job.id)"class="fas fa-star favorite"></i><i @click="addOrRemove(job.id, starred)" v-show="!starred.includes(job.id)"class="far fa-star favorite"></i></li>
+                    <li>City: {{job.city}}</li>
+                    <li>Position: {{job.position}}</li>
+                    <li>Description: <br> {{job.description}}</li>
+                    <li>Date of creation: {{job.created_at}}</li>
+                    <li>Type of contract: {{job.contract}}</li>
+                    <li v-show="!applied.includes(job.id)"><button class="btn btn-primary" @click="addOrRemove(job.id, applied), apply()">APPLY</button></li>
+                    <li v-show="applied.includes(job.id)"><button class="btn btn-outline-secondary">Already applied</button></li>
+                </ul>
+            </div>
         </div>
-        <div v-show="modalVisible" class="modal"></div>
+        <div class="float-start col-4 list">
+            STARRED OFFERS
+            <div :class="{'applied-job': applied.includes(job.id)}" v-for="job in jobs" v-show="starred.includes(job.id)">
+                <ul>
+                    <li><b>{{job.company}}</b><i @click="addOrRemove(job.id, starred)" v-show="starred.includes(job.id)"class="fas fa-star favorite"></i><i @click="addOrRemove(job.id, starred)" v-show="!starred.includes(job.id)"class="far fa-star favorite"></i></li>
+                    <li>City: {{job.city}}</li>
+                    <li>Position: {{job.position}}</li>
+                    <li>Description: <br> {{job.description}}</li>
+                    <li>Date of creation: {{job.created_at}}</li>
+                    <li>Type of contract: {{job.contract}}</li>
+                    <li v-show="!applied.includes(job.id)"><button class="btn btn-primary" @click="addOrRemove(job.id, applied), apply()">APPLY</button></li>
+                    <li v-show="applied.includes(job.id)"><button class="btn btn-outline-secondary">Already applied</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="float-end col-4 applied-job list">
+            APPLIED OFFERS
+            <div :class="{'applied-job': applied.includes(job.id)}" v-for="job in jobs" v-show="applied.includes(job.id)">
+                <ul>
+                    <li><b>{{job.company}}</b></li>
+                    <li>City: {{job.city}}</li>
+                    <li>Position: {{job.position}}</li>
+                    <li>Description: <br> {{job.description}}</li>
+                    <li>Date of creation: {{job.created_at}}</li>
+                    <li>Type of contract: {{job.contract}}</li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        
+          
     </div>
     <script src="jobs.js"></script>
 </body>

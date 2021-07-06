@@ -1,0 +1,11 @@
+.applied-job{
+    background-color: rgb(207, 239, 250);
+}
+
+.favorite{
+    color: gold;
+}
+
+.list{
+    border: 1px solid lightgray;
+}

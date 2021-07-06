@@ -57,7 +57,7 @@ var app = new Vue({
         ],
         starred: [1, 2, 3],
         applied: [4, 5],
-        modalVisible: false,
+        displayModal: true,
     },
     methods:{
         addOrRemove(id, array){
@@ -71,13 +71,17 @@ var app = new Vue({
             }
         },
         apply(){
-            function modalOnOff(){
+            function modalOnOff(displayModal){
                 setTimeout(function(){
-                    modalVisible = !modalVisible;
+                    if(this.displayModal === true){
+                        this.displayModal = false;
+                    }   else{
+                        this.displayModal = true;
+                    };
                 }, 1000)
             }
             modalOnOff();
-            if(modalVisible){
+            if(this.displayModal === true){
                 modalOnOff();
             }
         }
