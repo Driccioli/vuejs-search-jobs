@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
     <div id="app">
         <div v-for="job in jobs">
             <ul>
-                <li><b>{{job.company}}</b></li>
+                <li><i v-show="starred.includes(job.id)"class="fas fa-star"></i><i v-show="!starred.includes(job.id)"class="far fa-star"></i><b>{{job.company}}</b></li>
                 <li>City: {{job.city}}</li>
                 <li>Position: {{job.position}}</li>
                 <li>Description: <br> {{job.description}}</li>
