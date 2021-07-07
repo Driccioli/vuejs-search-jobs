@@ -74,18 +74,12 @@ var app = new Vue({
           console.log(app.showModal);
           function candidatura(){
             setTimeout(function(){
-              if(app.showModal == true){
-                console.log("Modal currently showing");
-                app.showModal = false;
-              } else{
-                app.showModal = true;
-              }
+              app.showModal = !app.showModal;
             }, 1000);
           };
           candidatura();
           setTimeout(function(){
-            if(app.showModal == true){
-              console.log("Is this even working?")
+            if(app.showModal){
               candidatura();
             }
           }, 1000);
