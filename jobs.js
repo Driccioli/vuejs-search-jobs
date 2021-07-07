@@ -57,7 +57,7 @@ var app = new Vue({
         ],
         starred: [1, 2, 3],
         applied: [4, 5],
-        displayModal: true,
+        showModal: false,
     },
     methods:{
         addOrRemove(id, array){
@@ -68,22 +68,29 @@ var app = new Vue({
             }
             if(this.applied.includes(id)){
                 this.starred.splice(this.starred.indexOf(id),1);
-            }
+            };
         },
         apply(){
-            function modalOnOff(displayModal){
-                setTimeout(function(){
-                    if(this.displayModal === true){
-                        this.displayModal = false;
-                    }   else{
-                        this.displayModal = true;
-                    };
-                }, 1000)
+          console.log(app.showModal);
+          function candidatura(){
+            setTimeout(function(){
+              if(app.showModal == true){
+                console.log("Modal currently showing");
+                app.showModal = false;
+              } else{
+                app.showModal = true;
+              }
+            }, 1000);
+          };
+          candidatura();
+          setTimeout(function(){
+            if(app.showModal == true){
+              console.log("Is this even working?")
+              candidatura();
             }
-            modalOnOff();
-            if(this.displayModal === true){
-                modalOnOff();
-            }
+          }, 1000);
+          
         }
     }
 });
+

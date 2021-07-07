@@ -9,3 +9,17 @@
 .list{
     border: 1px solid lightgray;
 }
+
+.custom-modal{
+    position: fixed;
+    font-size: 30px;
+    padding: 15px;
+    top: 30px;
+    left: 50%;
+    transform:translateX(-50%);
+    z-index: 1010;
+    background-color: white;
+    border: 2px solid blue;
+    color: blue;
+    border-radius: 12px;
+}
